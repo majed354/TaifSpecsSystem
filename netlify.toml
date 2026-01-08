@@ -1,0 +1,39 @@
+# Netlify Configuration
+# نظام توصيفات البرامج والمقررات - جامعة الطائف
+
+[build]
+  # لا يوجد أمر بناء - ملفات ثابتة
+  command = ""
+  # مجلد النشر
+  publish = "."
+
+# إعدادات الهيدرز
+[[headers]]
+  for = "/*"
+  [headers.values]
+    X-Frame-Options = "DENY"
+    X-XSS-Protection = "1; mode=block"
+    X-Content-Type-Options = "nosniff"
+    Referrer-Policy = "strict-origin-when-cross-origin"
+
+# إعادة التوجيه للصفحات
+[[redirects]]
+  from = "/admin"
+  to = "/admin.html"
+  status = 200
+
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200
+
+# إعدادات الكاش
+[[headers]]
+  for = "/*.js"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000"
+
+[[headers]]
+  for = "/*.css"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000"
